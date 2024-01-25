@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Farbwechsel</title>
+  <style>
+    /* Stil für den Button */
+    .colorButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    #colorButton {
+      padding: 100px 200px;
+      font-size: 120x;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Button der die Farbe ändert -->
+  <div class="colorButton">
+  <button id="colorButton">Ändere die Farbe</button>
+  </div>
+
+
+  <script>
+    // JavaScriptt
+
+    // Funktion wenn der Button geklickt wird
+    function changeColor() {
+      // Farben
+      const colors = ["red", "green", "blue", "yellow", "purple", "orange"];
+
+      // Zufälige Farbe
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+      // Button auswählen und Hintergrundfarbe ändern
+      document.getElementById("colorButton").style.backgroundColor = randomColor;
+    }
+
+    // Den Button mit der Funktion verknüpfen
+    document.getElementById("colorButton").onclick = changeColor;
+  </script>
+
+  
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zufälliges Passwort Generator</title>
+  <!-- Lade die jQuery-Bibliothek von einem CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+  <h1>Zufälliges Passwort Generator</h1>
+  
+  <label for="passwordLength">Passwortlänge:</label>
+  <input type="number" id="passwordLength" name="passwordLength" min="1" value="12">
+  
+  <button onclick="generatePassword()">Passwort generieren</button>
+
+  <!-- Hier wird das generierte Passwort angezeigt -->
+  <div id="generatedPassword"></div>
+  
+  <script>
+    function generatePassword() {
+      const passwordLength = $('#passwordLength').val();
+
+      // Ändere die Art und Weise, wie die Antwort verarbeitet wird
+      $.post('/generatePassword', { passwordLength }, function(data) {
+        // Überprüfe, ob die Antwort nicht leer ist
+        if (data.trim() !== '') {
+          // Anzeige des generierten Passworts unter dem Button
+          $('#generatedPassword').text('Generiertes Passwort: ' + data);
+        } else {
+          // Falls die Antwort leer ist, zeige eine Fehlermeldung an
+          $('#generatedPassword').text('Fehler beim Generieren des Passworts.');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
